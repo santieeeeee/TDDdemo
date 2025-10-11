@@ -10,3 +10,7 @@ string MathExpression::getExpression() {
 void MathExpression::setExpression(string math_expression) {
 	this->math_expression_ = math_expression;
 }
+
+int MathExpression::calculate() {
+	return 0;
+}

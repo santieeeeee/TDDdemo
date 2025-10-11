@@ -9,4 +9,5 @@ public:
 	MathExpression(string math_expression);
 	string getExpression();
 	void setExpression(string math_expression);
+	int calculate();
 };

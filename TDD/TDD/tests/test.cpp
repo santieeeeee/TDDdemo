@@ -26,3 +26,9 @@ TEST(MathExpression, getExpression) {
 
 	EXPECT_EQ(a.getExpression(), expression);
 }
+
+TEST(MathExpression, calculate_EmptyExpression) {
+	MathExpression a("");
+
+	EXPECT_THROW(a.calculate(), invalid_argument);
+}
