@@ -32,3 +32,9 @@ TEST(MathExpression, calculate_EmptyExpression) {
 
 	EXPECT_THROW(a.calculate(), invalid_argument);
 }
+
+TEST(MathExpression, calculate_SingleNumber_5) {
+	MathExpression a("5");
+
+	EXPECT_EQ(a.calculate(), 5);
+}
