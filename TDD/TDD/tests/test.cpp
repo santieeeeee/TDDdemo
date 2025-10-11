@@ -44,3 +44,15 @@ TEST(MathExpression, calculate_SingleNumber_9) {
 
 	EXPECT_EQ(a.calculate(), 9);
 }
+
+TEST(MathExpression, calculate_SingleNumber_minus_382) {
+	MathExpression a("-382");
+
+	EXPECT_EQ(a.calculate(), -382);
+}
+
+TEST(MathExpression, calculate_SingleNumber_0) {
+	MathExpression a("0");
+
+	EXPECT_EQ(a.calculate(), 0);
+}
