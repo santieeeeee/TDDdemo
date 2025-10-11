@@ -12,5 +12,6 @@ void MathExpression::setExpression(string math_expression) {
 }
 
 int MathExpression::calculate() {
+	if (this->getExpression().empty()) throw invalid_argument("empty expression");
 	return 0;
 }
