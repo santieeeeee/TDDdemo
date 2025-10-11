@@ -38,3 +38,9 @@ TEST(MathExpression, calculate_SingleNumber_5) {
 
 	EXPECT_EQ(a.calculate(), 5);
 }
+
+TEST(MathExpression, calculate_SingleNumber_9) {
+	MathExpression a("9");
+
+	EXPECT_EQ(a.calculate(), 9);
+}
