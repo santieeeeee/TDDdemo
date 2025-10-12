@@ -56,3 +56,9 @@ TEST(MathExpression, calculate_SingleNumber_0) {
 
 	EXPECT_EQ(a.calculate(), 0);
 }
+
+TEST(MathExpression, calculate_Expression_1_plus_1) {
+	MathExpression a("1+1");
+
+	EXPECT_EQ(a.calculate(), 2);
+}
