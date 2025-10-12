@@ -12,9 +12,18 @@ void MathExpression::setExpression(string math_expression) {
 }
 
 int MathExpression::calculate() {
-	if (this->getExpression().empty()) {
-		throw invalid_argument("empty expression");
-	}
+		string expr = this->getExpression();
+		if (expr.empty()) {
+			throw invalid_argument("empty expression");
+		}
 
-	return stoi(this->getExpression());
+		auto it = find(expr.begin(), expr.end(), '+');
+		if (it == expr.end()) {
+			return stoi(expr);
+		}
+		string number(expr.begin(), it);
+		expr.erase(expr.begin(), it + 1);
+		int answer = stoi(number) + stoi(expr);
+
+		return answer;
 }
