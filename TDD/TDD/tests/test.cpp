@@ -80,3 +80,9 @@ TEST(MathExpression, calculate_Expression_2_times_2) {
 
 	EXPECT_EQ(a.calculate(), 4);
 }
+
+TEST(MathExpression, calculate_Expression_4_divide_2) {
+	MathExpression a("4/2");
+
+	EXPECT_EQ(a.calculate(), 2);
+}
