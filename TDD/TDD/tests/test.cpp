@@ -74,3 +74,9 @@ TEST(MathExpression, calculate_Expression_4_minus_2) {
 
 	EXPECT_EQ(a.calculate(), 2);
 }
+
+TEST(MathExpression, calculate_Expression_2_times_2) {
+	MathExpression a("2*2");
+
+	EXPECT_EQ(a.calculate(), 4);
+}
