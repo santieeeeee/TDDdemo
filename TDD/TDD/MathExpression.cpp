@@ -12,27 +12,27 @@ void MathExpression::setExpression(string math_expression) {
 }
 
 int MathExpression::calculate() {
-		string expr = this->getExpression();
-		if (expr.empty()) {
-			throw invalid_argument("empty expression");
-		}
-		int k = 1;
-		auto it = find(expr.begin(), expr.end(), '+');
-		if (it == expr.end()) {
-			it = find(expr.begin(), expr.end(), '-');
-			if (it == expr.end()) {
-				return stoi(expr);
-			}
-			else {
-				k = -1;
-			}
-		}
-		string number(expr.begin(), it);
-		if (number.empty()) {
-			return stoi(expr);
-		}
-		expr.erase(expr.begin(), it + 1);
-		int answer = stoi(number) + k * stoi(expr);
 
-		return answer;
+	string expr = this->getExpression();
+	if (expr.empty()) {
+		throw invalid_argument("empty expression");
+	}
+
+	auto pos = expr.find_first_of("+-", 1);
+	if (pos == string::npos) {
+		return stoi(expr);
+	}
+
+	string left = expr.substr(0, pos);
+	char Operator = expr[pos];
+	string right = expr.substr(pos + 1);
+
+
+	if (left.empty() || right.empty()) {
+		throw invalid_argument("invalid expression");
+	}
+
+	int L = stoi(left);
+	int R = stoi(right);
+	return (Operator == '+') ? (L + R) : (L - R);	
 }
