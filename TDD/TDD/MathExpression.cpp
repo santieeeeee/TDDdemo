@@ -18,21 +18,38 @@ int MathExpression::calculate() {
 		throw invalid_argument("empty expression");
 	}
 
-	auto pos = expr.find_first_of("+-", 1);
-	if (pos == string::npos) {
-		return stoi(expr);
-	}
+    size_t opPos = string::npos;
+    for (size_t i = 1; i < expr.size(); ++i) {
+        char c = expr[i];
+        if (c == '+' || c == '-' || c == '*' || c == '/') { 
+            opPos = i;
+            break;
+        }
+    }
 
-	string left = expr.substr(0, pos);
-	char Operator = expr[pos];
-	string right = expr.substr(pos + 1);
+    if (opPos == string::npos) {
+        return std::stoi(expr);
+    }
 
+    if (opPos == 0) {
+        return std::stoi(expr);
+    }
 
-	if (left.empty() || right.empty()) {
-		throw invalid_argument("invalid expression");
-	}
+    string left = expr.substr(0, opPos);
+    char op = expr[opPos];
+    string right = expr.substr(opPos + 1);
 
-	int L = stoi(left);
-	int R = stoi(right);
-	return (Operator == '+') ? (L + R) : (L - R);	
+    int L = std::stoi(left);
+    int R = std::stoi(right);
+
+    switch (op) {
+    case '+': return L + R;
+    case '-': return L - R;
+    case '*': return L * R;
+    case '/':
+        if (R == 0) throw std::invalid_argument("division by zero");
+        return L / R;
+    default:
+        throw std::invalid_argument("unsupported operator");
+    }
 }
