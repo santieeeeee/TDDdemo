@@ -68,3 +68,9 @@ TEST(MathExpression, calculate_Expression_123_plus_321) {
 
 	EXPECT_EQ(a.calculate(), 444);
 }
+
+TEST(MathExpression, calculate_Expression_4_minus_2) {
+	MathExpression a("4-2");
+
+	EXPECT_EQ(a.calculate(), 2);
+}

@@ -16,14 +16,23 @@ int MathExpression::calculate() {
 		if (expr.empty()) {
 			throw invalid_argument("empty expression");
 		}
-
+		int k = 1;
 		auto it = find(expr.begin(), expr.end(), '+');
 		if (it == expr.end()) {
-			return stoi(expr);
+			it = find(expr.begin(), expr.end(), '-');
+			if (it == expr.end()) {
+				return stoi(expr);
+			}
+			else {
+				k = -1;
+			}
 		}
 		string number(expr.begin(), it);
+		if (number.empty()) {
+			return stoi(expr);
+		}
 		expr.erase(expr.begin(), it + 1);
-		int answer = stoi(number) + stoi(expr);
+		int answer = stoi(number) + k * stoi(expr);
 
 		return answer;
 }
