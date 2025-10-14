@@ -62,3 +62,9 @@ TEST(MathExpression, calculate_Expression_1_plus_1) {
 
 	EXPECT_EQ(a.calculate(), 2);
 }
+
+TEST(MathExpression, calculate_Expression_123_plus_321) {
+	MathExpression a("123+321");
+
+	EXPECT_EQ(a.calculate(), 444);
+}
