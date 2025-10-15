@@ -92,3 +92,15 @@ TEST(MathExpression, calculate_Expression_1_plus_2_plus_3) {
 
 	EXPECT_EQ(a.calculate(), 6);
 }
+
+TEST(MathExpression, calculate_Expression_1_plus_2_mult_3) {
+	MathExpression a("1+2*3");
+
+	EXPECT_EQ(a.calculate(), 7);
+}
+
+TEST(MathExpression, calculate_Expression_1_plus_6_dev_3) {
+	MathExpression a("1+6/3");
+
+	EXPECT_EQ(a.calculate(), 6);
+}

@@ -23,7 +23,7 @@ int MathExpression::calculate() {
 
     if (expr[i] == '+' || expr[i] == '-') {
         negative = (expr[i] == '-');
-        ++i;
+        i++;
     }
 
     size_t start = i;
