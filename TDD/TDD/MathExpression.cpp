@@ -35,6 +35,8 @@ int MathExpression::calculate() {
         result *= -1;
     }
 
+    int lastTerm = result;
+
     while (i < expr.size()) {
         char op = expr[i++];
         start = i;
@@ -44,18 +46,24 @@ int MathExpression::calculate() {
 
         int num = stoi(expr.substr(start, i - start));
 
-        switch (op) {
-        case '+': result += num; break;
-        case '-': result -= num; break;
-        case '*': result *= num; break;
-        case '/':
-            if (num == 0) throw std::invalid_argument("division by zero");
-            result /= num;
-            break;
-        default:
-            throw std::invalid_argument("unsupported operator");
+        if (op == '+' || op == '-') {
+            int signedNum = (op == '+') ? num : -num;
+            result += signedNum;
+            lastTerm = signedNum;
+        }
+        else if (op == '*' || op == '/') {
+            int newLast;
+            if (op == '*') {
+                newLast = lastTerm * num;
+            }
+            else {
+                if (num == 0) throw std::invalid_argument("division by zero");
+                newLast = lastTerm / num;
+            }
+
+            result = result - lastTerm + newLast;
+            lastTerm = newLast;
         }
     }
-
     return result;
 }

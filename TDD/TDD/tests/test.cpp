@@ -102,5 +102,5 @@ TEST(MathExpression, calculate_Expression_1_plus_2_mult_3) {
 TEST(MathExpression, calculate_Expression_1_plus_6_dev_3) {
 	MathExpression a("1+6/3");
 
-	EXPECT_EQ(a.calculate(), 6);
+	EXPECT_EQ(a.calculate(), 3);
 }
