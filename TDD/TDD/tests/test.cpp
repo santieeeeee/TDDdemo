@@ -86,3 +86,9 @@ TEST(MathExpression, calculate_Expression_4_divide_2) {
 
 	EXPECT_EQ(a.calculate(), 2);
 }
+
+TEST(MathExpression, calculate_Expression_1_plus_2_plus_3) {
+	MathExpression a("1+2+3");
+
+	EXPECT_EQ(a.calculate(), 6);
+}
